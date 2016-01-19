@@ -1,0 +1,26 @@
+CONFigure:RFSA:GPRF:MEASurement:TXPower:ENABle ON 
+CONFigure:RFSA:GPRF:MEASurement:IQVTime:ENABle OFF
+CONFigure:RFSA:GPRF:MEASurement:FCOunt:ENABle OFF
+CONFigure:RFSA:GPRF:FREQuency:CENTer 1E9          
+CONFigure:RFSA:GPRF:POWer:MAXimum -30  
+CONFigure:RFSA:GPRF:MEASurement:TXPower:RBWidth 10e6
+CONFigure:RFSA:GPRF:MEASurement:TXPower:RBWidth:FILTer:TYPE NONE  
+//CONFigure:RFSA:GPRF:MEASurement:TXPower:INTerval 0.2
+//CONFigure:RFSA:GPRF:MEASurement:TXPower:AVERaging:COUNt 1
+//CONFigure:RFSA:GPRF:MEASurement:TXPower:AVERaging:TYPe MEAN           
+//CONFigure:RFSA:GPRF:PORTname 'Port4'              
+TRIGger:RFSA:GPRF:SOURce 'RF 0';
+//TRIGger:RFSA:GPRF:SOURce 'Immediate'
+TRIGger:RFSA:GPRF:EDGE RISing
+TRIGger:RFSA:GPRF:TOUT 3
+*WAI  
+                  
+INITiate:RFSA:GPRF;*WAI;*STB?
+SOURce:RFSG:GPRF:MODE CW                    
+SOURce:RFSG:GPRF:RFSettings:LEVel -30       
+SOURce:RFSG:GPRF:FREQuency:CENTer 1E9    
+//SOURce:RFSG:GPRF:RFSettings:PORTname 'Port0';
+*WAI  
+SOURce:RFSG:GPRF:STATe ON;*WAI;*STB?
+FETCh:RFSA:GPRF:RESults:TXPower:ALL?
+SOURce:RFSG:GPRF:STATe OFF;*WAI;*STB?
